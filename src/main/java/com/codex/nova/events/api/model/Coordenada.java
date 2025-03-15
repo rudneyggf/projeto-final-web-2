@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class Coordenada {
 
     @Column(name = "coordenada_x")
@@ -17,4 +16,20 @@ public class Coordenada {
 
     @Column(name = "coordenada_y")
     private double y;
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
 }

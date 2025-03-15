@@ -2,17 +2,11 @@ package com.codex.nova.events.api.controller;
 
 import com.codex.nova.events.api.model.Coordenada;
 import com.codex.nova.events.api.model.Evento;
-import com.codex.nova.events.api.model.Usuario;
 import com.codex.nova.events.api.model.enums.Tipo;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.time.LocalDateTime;
+
 import java.util.Date;
 
-@Getter
-@NoArgsConstructor
 public class EventoFormRequest {
 
 

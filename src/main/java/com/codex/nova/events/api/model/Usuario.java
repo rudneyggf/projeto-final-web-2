@@ -1,12 +1,8 @@
 package com.codex.nova.events.api.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 @Entity
 @Table(name = "usuario")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Usuario {
 
     @Id
@@ -38,4 +34,13 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(String nickname, String email, String senha) {
+        this.nickname = nickname;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario() {
+        super();
+    }
 }

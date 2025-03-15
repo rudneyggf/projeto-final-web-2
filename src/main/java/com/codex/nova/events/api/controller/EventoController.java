@@ -41,19 +41,19 @@ public class EventoController {
     @PostMapping
     public ResponseEntity<EventoFormRequest> postEvento(@RequestBody EventoFormRequest eventoFormRequest){
         Evento evento = eventoFormRequest.toModel();
-        String nick = eventoFormRequest.getUsuario_nickname();
-        Usuario usuario = usuarioRepository.findById(nick)
-                .orElseThrow(() -> new RuntimeException("Usuario com nick não encontrado: " + nick));
-        evento.setUsuario(usuario);
+
+        adicionar_FKey_Evento(eventoFormRequest,evento);
         eventoRepository.save(evento);
 
         return ResponseEntity.ok(EventoFormRequest.fromModel(evento));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EventoFormRequest> putEvento(@RequestBody EventoFormRequest request,@PathVariable Long id) {
-        Evento evento = request.toModel();
+    public ResponseEntity<EventoFormRequest> putEvento(@RequestBody EventoFormRequest eventoFormRequest,@PathVariable Long id) {
+        Evento evento = eventoRepository.findById(id).
+                orElseThrow(() -> new RuntimeException("Evento com id não encontrado: " + id));
 
+        adicionar_FKey_Evento(eventoFormRequest,evento);
         eventoRepository.save(evento);
 
         return ResponseEntity.ok().body(EventoFormRequest.fromModel(evento));
@@ -65,5 +65,12 @@ public class EventoController {
         eventoRepository.deleteById(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    public void adicionar_FKey_Evento(EventoFormRequest eventoFormRequest,Evento evento){
+        String nick = eventoFormRequest.getUsuarioNickname();
+        Usuario usuario = usuarioRepository.findById(nick)
+                .orElseThrow(() -> new RuntimeException("Usuario com nick não encontrado: " + nick));
+        evento.setUsuario(usuario);
     }
 }

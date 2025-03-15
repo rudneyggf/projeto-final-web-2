@@ -2,13 +2,8 @@ package com.codex.nova.events.api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Embeddable
-@AllArgsConstructor
-@NoArgsConstructor
 public class Coordenada {
 
     @Column(name = "coordenada_x")
@@ -16,6 +11,7 @@ public class Coordenada {
 
     @Column(name = "coordenada_y")
     private double y;
+
 
     public double getX() {
         return x;
@@ -31,5 +27,14 @@ public class Coordenada {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public Coordenada(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Coordenada() {
+        super();
     }
 }

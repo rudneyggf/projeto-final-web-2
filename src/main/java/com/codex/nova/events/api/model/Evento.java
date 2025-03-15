@@ -2,7 +2,6 @@ package com.codex.nova.events.api.model;
 
 import com.codex.nova.events.api.model.enums.Tipo;
 import jakarta.persistence.*;
-import lombok.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,7 +11,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "eventos")
-@NoArgsConstructor
 public class Evento {
 
     @Id
@@ -96,6 +94,10 @@ public class Evento {
     }
     public void setHorasDuracao(int horasDuracao) {
         this.horasDuracao = horasDuracao;
+    }
+
+    public Evento(){
+        super();
     }
 
     public Evento(Long id, Coordenada coordenada, String descricao, Tipo tipo, int prioridade, Date dataInicio, int horasDuracao) {
